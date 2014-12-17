@@ -5,6 +5,7 @@
  */
 package loanbroker.webservice;
 
+import javax.ejb.Stateless;
 import loanbroker.RuleBaseGateway;
 import javax.jws.WebService;
 import javax.jws.WebMethod;
@@ -14,6 +15,7 @@ import javax.jws.WebParam;
  *
  * @author mhck
  */
+@Stateless
 @WebService(serviceName = "RuleBaseWebService")
 public class RuleBaseWebService {
     

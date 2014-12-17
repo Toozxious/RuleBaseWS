@@ -14,22 +14,35 @@ public class RuleBase {
     public String getRules(int creditScore, int loanDuration, double loanAmount){
         String rule = "";
         if(creditScore <= 500){
-            if(loanAmount > 20000 && loanDuration > 100)
+            if(loanAmount < 20000){
+                if(loanDuration > 100){
+                    rule = "expensive.high";
+                }else{
+                    rule = "expensive.low";
+                }
+            }else{
                 rule = "expensive.high";
-            if(loanAmount > 20000 && loanDuration < 100)
-                rule = "expensive.low";
-            
+            }
+                
         }else if(creditScore <= 700 && creditScore >= 501){
-            if(loanAmount > 150000 && loanDuration > 100)
-                rule = "expensive.low";
-            if(loanAmount > 150000 && loanDuration < 100) 
-                rule = "cheap.high";
-            
-        }else if(creditScore <= 800 && creditScore >= 701){
-            if(loanAmount > 500000 && loanDuration > 100)
-                rule = "cheap.high";
-            if(loanAmount > 500000 && loanDuration < 100) 
+            if(loanAmount < 150000){
+                if(loanDuration > 100){
+                    rule = "expensive.low";
+                }else{
+                    rule = "cheap.high";
+                }
+            }else{
                 rule = "cheap.low";
+            }  
+        }else if(creditScore <= 800 && creditScore >= 701){
+            if(loanAmount > 500000){
+                if(loanDuration > 100){
+                    rule = "cheap.high";
+                }else{
+                    rule = "cheap.low";
+                }
+            }else
+                rule = "cheap.low";     
         }
         return rule;
     }
